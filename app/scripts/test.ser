@@ -1,0 +1,57 @@
+// const { resolve } = require("path");
+
+// async function api1(){
+    // let promise = new Promise(resolve => {
+    //     setTimeout(resolve, 4000);
+    //     return "api 1 res";
+    // });
+    // let res = await promise;
+    // return Promise.resolve("api1 res");
+// }
+const { resolve } = require("path");
+
+function api1(inp){
+    return new Promise(resolve => {
+        setTimeout(()=>{
+            console.log("first call");
+            resolve(inp)
+        }, 1000);
+    });
+}
+
+function api2(inp){
+    return new Promise(resolve => {
+        setTimeout(()=>{
+            console.log("second call");
+            resolve(inp)
+        }, 1000);
+    });
+}
+
+function api3(inp){
+    return new Promise(resolve => {
+        setTimeout(()=>{
+            console.log("third call");
+            resolve(inp)
+        }, 1000);
+    });
+}
+
+async function callAPI(){
+    let api1res = await api1("api1");
+    let api2res = await api2(api1res+"2");
+    let api3res = await api3(api2res+"3");
+    console.log("await : ",api3res);
+}
+callAPI();
+
+// api1("api1").then((data)=>{
+
+//     api2(data+"2").then((data)=>{
+
+//         api3(data+"3").then((data)=>{
+//             console.log(data);
+//         })
+//     })
+// })
+console.log("end");
