@@ -1,16 +1,20 @@
   <div class="jumbotron">
     <div class="row">
       <div ng-if="loggedIn=='in'">
-        <h1>Hello!, <span ng-bind="main.userName"></span></h1>
+        <h1>Hello!, <span ng-bind="user"></span></h1>
         <button ng-click="logout()">Logout</button>
       </div>
       <div ng-if="loggedIn=='out'">
         <div class="lead">Login</div>
         <form ng-submit="login()">
-          <input type="text" ng-model="main.userName" placeholder="Username" />
+          <input type="text" ng-model="username" placeholder="Username" />
           <input type="password" ng-model="password" placeholder="Password" />
           <input type="submit" value="Login">
         </form>
+      </div>
+      <div ng-if="isLoading==1" class="lead">
+      </br>
+        Loading...
       </div>
     </div>
   </div>
