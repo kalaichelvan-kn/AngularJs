@@ -33,4 +33,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($rootScope){
+    $rootScope.loggedIn = "out";
+    $rootScope.user = "null";
   });
